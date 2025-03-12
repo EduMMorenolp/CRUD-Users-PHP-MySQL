@@ -67,3 +67,11 @@ Panel de Administración : Gestión avanzada de usuarios con filtros y restaurac
 | **GET**    | `/users`        | Obtener datos del usuario         |
 | **PUT**    | `/users/update` | Actualizar usuario                |
 | **DELETE** | `/users/delete` | Eliminar usuario (borrado lógico) |
+
+## 📝 **Licencia**
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+
+## 🌟 Contribuciones
+
+¡Las contribuciones son bienvenidas! Si tienes sugerencias o encuentras errores, no dudes en crear un issue o enviar un pull request.
