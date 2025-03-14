@@ -23,10 +23,10 @@ $router->addRoute('POST', '/auth/login', function () use ($pdo) {
 });
 
 // Rutas protegidas (usuarios)
-$router->addRoute('GET', '/users', function () use ($pdo) {
+$router->addRoute('GET', '/users', function ($id) use ($pdo) {
     AuthMiddleware::requireLogin();
     $userController = new UserController($pdo);
-    $userController->getAllUsers();
+    $userController->getUserById($id);
 });
 
 $router->addRoute('PUT', '/users/update/{id}', function ($id) use ($pdo) {
@@ -45,6 +45,26 @@ $router->addRoute('DELETE', '/users/delete/{id}', function ($id) use ($pdo) {
 $router->addRoute('GET', '/admin/allusers', function () use ($pdo) {
     $adminController = new AdminController($pdo);
     $adminController->getAllUsers();
+});
+
+$router->addRoute('GET', '/admin/users/{id}', function ($id) use ($pdo) {
+    $adminController = new AdminController($pdo);
+    $adminController->getUserById($id);
+});
+
+$router->addRoute('GET', '/admin/search', function () use ($pdo) {
+    $adminController = new AdminController($pdo);
+    $adminController->searchUsers(Request::getQueryParams());
+});
+
+$router->addRoute('PUT', '/admin/users/update/{id}', function ($id) use ($pdo) {
+    $adminController = new AdminController($pdo);
+    $adminController->updateUser($id, Request::getBody());
+});
+
+$router->addRoute('DELETE', '/admin/users/delete/{id}', function ($id) use ($pdo) {
+    $adminController = new AdminController($pdo);
+    $adminController->deleteUser($id);
 });
 
 $router->addRoute('PUT', '/admin/users/restore/{id}', function ($id) use ($pdo) {
