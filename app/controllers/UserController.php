@@ -11,12 +11,6 @@ class UserController
         $this->usuarioModel = new Usuario($pdo);
     }
 
-    // Obtener todos los usuarios
-    public function getAllUsers()
-    {
-        echo json_encode($this->usuarioModel->getAll());
-    }
-
     // Obtener usuario por ID
     public function getUserById($id)
     {
