@@ -17,6 +17,9 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $endpoint = $_GET['endpoint'] ?? '/';
 
+        echo "Método: $method\n";
+        echo "Endpoint: $endpoint\n";
+
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && $route['endpoint'] === $endpoint) {
                 call_user_func($route['callback']);
