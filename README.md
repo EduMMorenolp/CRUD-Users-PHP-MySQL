@@ -15,28 +15,38 @@ Panel de Administración : Gestión avanzada de usuarios con filtros y restaurac
 ## **Estructura de carpetas**
 
 ```bash
-/proyecto-crud
+/proyecto-api-php
 │
-├── /public                # Archivos públicos (HTML, CSS, JS)
-│   ├── index.php          # Página principal para listar usuarios
-│   ├── login.php          # Formulario de inicio de sesión
-│   ├── register.php       # Formulario de registro
-│   ├── admin/             # Panel de administración
-│   │   ├── allusers.php   # Lista todos los usuarios
-│   │   ├── edituser.php   # Edita un usuario
-│   │   └── search.php     # Busca usuarios con filtros
-│   ├── assets/            # Archivos estáticos (CSS, JS, imágenes)
-│   │   └── style.css      # Hoja de estilos
+├── /app                     # Lógica principal del backend
+│   ├── /Controllers         # Controladores para manejar las solicitudes HTTP
+│   │   ├── AuthController.php  # Maneja autenticación (login, register, logout)
+│   │   ├── AdminController.php # Maneja endpoints de administrador
+│   │   └── UserController.php  # Maneja endpoints de usuarios
+│   │
+│   ├── /Models              # Modelos para interactuar con la base de datos
+│   │   ├── Usuario.php         # Modelo de usuarios
+│   │   └── BaseModel.php       # Clase base para modelos
+│   │
+│   ├── /Middleware          # Middleware para proteger rutas
+│   │   ├── AuthMiddleware.php  # Verifica autenticación
+│   │   └── RoleMiddleware.php  # Verifica roles (admin/usuario)
+│   │
+│   └── /Core                # Componentes centrales del framework
+│       ├── Router.php          # Enrutador para manejar las rutas
+│       └── Request.php         # Manejo de solicitudes HTTP
 │
-├── /src                   # Código fuente (lógica del backend)
-│   ├── db.php             # Configuración de la conexión a la base de datos
-│   ├── Usuario.php        # Modelo para manejar los usuarios
-│   ├── Auth.php           # Modelo para manejar autenticación
-│   ├── funciones.php      # Funciones auxiliares
-│   └── middleware.php     # Middleware para proteger rutas
+├── /config                  # Archivos de configuración
+│   ├── db.php                  # Configuración de la conexión a la base de datos
+│   └── constants.php           # Constantes globales (opcional)
 │
-├── .htaccess              # Configuración para redirigir todo al directorio /public
-└── README.md              # Documentación del proyecto
+├── /public                   # Archivos públicos
+│   ├── index.php              # Entrada principal de la API
+│   └── .htaccess              # Configuración para redirigir solicitudes al backend
+│
+├── /logs                     # Registros de errores y logs
+│   └── error.log              # Archivo de registro de errores
+│
+└── README.md                 # Documentación del proyecto
 ```
 
 ## 📌 Endpoints
