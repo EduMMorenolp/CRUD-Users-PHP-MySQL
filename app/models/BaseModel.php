@@ -7,5 +7,10 @@ class BaseModel
     {
         $this->pdo = $pdo;
     }
+
+    public function getPdo()
+    {
+        return $this->pdo;
+    }
 }
 ?>
