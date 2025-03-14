@@ -1,8 +1,13 @@
 <?php
-$host = 'localhost';
-$dbname = 'crud_php';
-$username = 'root';
-$password = 'root';
+require_once __DIR__ . '/config.php';
+
+// Cargar las variables de configuración
+$config = require __DIR__ . '/config.php';
+
+$host = $config['host'];
+$dbname = $config['dbname'];
+$username = $config['username'];
+$password = $config['password'];
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
