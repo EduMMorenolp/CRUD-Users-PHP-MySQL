@@ -1,6 +1,0 @@
-[14-Mar-2025 03:57:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function redirect() in C:\Users\no_de\Desktop\CRUD-Users-PHP-MySQL\public\crear.php:20
-Stack trace:
-#0 {main}
-  thrown in C:\Users\no_de\Desktop\CRUD-Users-PHP-MySQL\public\crear.php on line 20
-[14-Mar-2025 03:58:37 UTC] Error en la creación de usuario: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'e.m.morenolp@gmail.com' for key 'usuarios.email'
-[14-Mar-2025 04:00:09 UTC] Error en la creación de usuario: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'e.m.morenolp@gmail.com' for key 'usuarios.email'
