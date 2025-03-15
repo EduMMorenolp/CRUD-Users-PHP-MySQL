@@ -15,15 +15,26 @@ class Router
     public function handleRequest()
     {
         $method = $_SERVER['REQUEST_METHOD'];
-        $endpoint = $_GET['endpoint'] ?? '/';
+        $requestUri = strtok($_SERVER['REQUEST_URI'], '?');
 
         echo "Método: $method\n";
-        echo "Endpoint: $endpoint\n";
+        echo "Endpoint: $requestUri\n";
 
         foreach ($this->routes as $route) {
-            if ($route['method'] === $method && $route['endpoint'] === $endpoint) {
-                call_user_func($route['callback']);
-                return;
+            // Convertir el endpoint en una expresión regular
+            $pattern = preg_replace('/\{(\w+)\}/', '(?P<$1>[^\/]+)', $route['endpoint']);
+            if (preg_match('#^' . $pattern . '$#', $requestUri, $matches)) {
+                // Extraer los valores de los parámetros dinámicos
+                $params = [];
+                foreach ($matches as $key => $value) {
+                    if (!is_int($key)) {
+                        $params[$key] = $value;
+                    }
+                }
+                if ($route['method'] === $method) {
+                    call_user_func_array($route['callback'], array_values($params));
+                    return;
+                }
             }
         }
 

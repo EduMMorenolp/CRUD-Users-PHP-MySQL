@@ -23,7 +23,7 @@ $router->addRoute('POST', '/auth/login', function () use ($pdo) {
 });
 
 // Rutas protegidas (usuarios)
-$router->addRoute('GET', '/users', function ($id) use ($pdo) {
+$router->addRoute('GET', '/users/{id}', function ($id) use ($pdo) {
     AuthMiddleware::requireLogin();
     $userController = new UserController($pdo);
     $userController->getUserById($id);
